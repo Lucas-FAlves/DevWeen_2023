@@ -44,20 +44,22 @@ public class Cauldron : MonoBehaviour
     {
         playerInputActions.Player.VirarCaldeirao.performed += EmptyCauldron;
         playerInputActions.Player.MexerComColher.performed += MixCauldron;
-        playerInputActions.Player.Interact.performed += FillFlask;
     }
 
     private void OnDisable()
     {
         playerInputActions.Player.VirarCaldeirao.performed -= EmptyCauldron;
         playerInputActions.Player.MexerComColher.performed -= MixCauldron;
-        playerInputActions.Player.Interact.performed -= FillFlask;
     }
 
-    private void FillFlask(InputAction.CallbackContext context)
+    private void FillFlask()
     {
+        Debug.Log("Entered");
         if (!playerIsNear || !player.IsHoldingFlask)
             return;
+
+        Debug.Log("Filled");
+
     }
 
     private void MixCauldron(InputAction.CallbackContext context)
@@ -117,7 +119,8 @@ public class Cauldron : MonoBehaviour
 
         if(item == flaskSO)
         {
-            Debug.Log("fill potion");
+            FillFlask();
+            return false;
         }
 
         if (currentIndex >= cauldronItems.Length)

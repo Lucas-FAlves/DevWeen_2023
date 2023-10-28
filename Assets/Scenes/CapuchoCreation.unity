@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 24981129}
   - component: {fileID: 24981128}
   - component: {fileID: 24981127}
+  - component: {fileID: 24981130}
   m_Layer: 6
   m_Name: Flask
   m_TagString: Untagged
@@ -243,6 +244,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &24981130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24981126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ca0a17717cc4e489ea2776dc0840c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSO: {fileID: 11400000, guid: 980c745f86d6c2b40b2dc1753d6dbd16, type: 2}
 --- !u!1 &195978925
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +918,7 @@ MonoBehaviour:
     m_Bits: 128
   interactionPoint: {fileID: 1778063028}
   ItemHolderTransform: {fileID: 195978926}
+  flaskSO: {fileID: 11400000, guid: 980c745f86d6c2b40b2dc1753d6dbd16, type: 2}
   IsHoldingFlask: 0
 --- !u!114 &1778063030
 MonoBehaviour:

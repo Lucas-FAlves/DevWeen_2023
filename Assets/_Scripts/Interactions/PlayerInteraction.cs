@@ -46,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
             if(CheckForCauldron())
             {
                 var cauldron = Physics2D.OverlapCircle(interactionPoint.position, interactionRange, cauldronMask);
-                bool placed = cauldron.GetComponent<Cauldron>().PlaceItemOnCauldron(currentInteractable.GetItemSO());
+                bool placed = cauldron.GetComponent<Cauldron>().PlaceItemOnCauldron(currentInteractable?.GetItemSO());
 
                 if (!placed) return;
 
@@ -69,7 +69,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
 
         currentInteractable = collider2Ds.GetComponent<IInteractable>();
-        IsHoldingFlask = (currentInteractable.GetItemSO().id == flaskSO.id) ? true : false;
+        IsHoldingFlask = (currentInteractable?.GetItemSO().id == flaskSO.id) ? true : false;
         currentInteractable?.Interact(this);
         isHoldingItem = true;
     }
