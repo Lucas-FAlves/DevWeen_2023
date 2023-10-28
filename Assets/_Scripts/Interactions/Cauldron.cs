@@ -83,12 +83,16 @@ public class Cauldron : MonoBehaviour
 
     private void EmptyCauldron(InputAction.CallbackContext context)
     {
+        Debug.Log("Passou");
         if (player.IsHoldingItem)
             return;
+
+        Debug.Log("Passou");
 
         if (!playerIsNear)
             return;
 
+        Debug.Log("Passou");
         currentIndex = 0;
         for (int i = 0; i < slots.Length; i++)
         {
@@ -99,10 +103,17 @@ public class Cauldron : MonoBehaviour
 
     public bool PlaceItemOnCauldron(ItemSO item)
     {
+        if (spoon.IsOnHand || !player.IsHoldingItem)
+            return false;
+
         if (currentIndex >= cauldronItems.Length)
             return false;
 
         cauldronItems[currentIndex] = item;
+
+        if(item == null)
+            return false;
+
         slots[currentIndex].GetComponent<SpriteRenderer>().sprite = cauldronItems[currentIndex].sprite;
         currentIndex++;
         return true;

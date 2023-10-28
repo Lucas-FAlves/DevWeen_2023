@@ -55,11 +55,15 @@ public class PlayerInteraction : MonoBehaviour
             {
                 currentInteractable?.Interact(this);
                 isHoldingItem = false;
+                currentInteractable = null;
                 return;
             }
             
         }
-    
+
+        if (collider2Ds == null)
+            return;
+
         currentInteractable = collider2Ds.GetComponent<IInteractable>();
         currentInteractable?.Interact(this);
         isHoldingItem = true;
