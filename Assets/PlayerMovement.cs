@@ -20,4 +20,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 movementValue = playerControls.ReadValue<Vector2>();
         _rigidbody.velocity = movementValue * moveSpeed;
     }
+
+
+
 }
