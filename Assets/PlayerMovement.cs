@@ -6,14 +6,13 @@ public class PlayerMovement : MonoBehaviour
     public InputAction playerControls;
     public float moveSpeed;
     private Rigidbody2D _rigidbody;
-    [SerializeField] private string player;
     private Transform _playerTransform;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody2D>();
-        _playerTransform = gameObject.transform.Find(player).transform;
+        _playerTransform = gameObject.transform;
         playerControls.Enable();
     }
 
