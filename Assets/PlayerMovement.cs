@@ -47,4 +47,7 @@ public class PlayerMovement : MonoBehaviour
         
         _rigidbody.velocity = movementValue * moveSpeed;
     }
+
+
+
 }
