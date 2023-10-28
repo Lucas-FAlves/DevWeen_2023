@@ -42,7 +42,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""id"": ""fc1a56eb-d7e1-4580-8174-79f713565e59"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MexerComColher"",
+                    ""type"": ""Button"",
+                    ""id"": ""7592a7d3-94e2-4ed6-ad03-c67873f0abbc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -62,10 +71,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""14c80f93-268c-4687-9c22-0044f02faddd"",
                     ""path"": ""<Keyboard>/k"",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""VirarCaldeirao"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""009c2d11-b77f-4be3-afb6-6c633bfac1a4"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MexerComColher"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -78,6 +98,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_VirarCaldeirao = m_Player.FindAction("VirarCaldeirao", throwIfNotFound: true);
+        m_Player_MexerComColher = m_Player.FindAction("MexerComColher", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_VirarCaldeirao;
+    private readonly InputAction m_Player_MexerComColher;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @VirarCaldeirao => m_Wrapper.m_Player_VirarCaldeirao;
+        public InputAction @MexerComColher => m_Wrapper.m_Player_MexerComColher;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @VirarCaldeirao.started += instance.OnVirarCaldeirao;
             @VirarCaldeirao.performed += instance.OnVirarCaldeirao;
             @VirarCaldeirao.canceled += instance.OnVirarCaldeirao;
+            @MexerComColher.started += instance.OnMexerComColher;
+            @MexerComColher.performed += instance.OnMexerComColher;
+            @MexerComColher.canceled += instance.OnMexerComColher;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -172,6 +198,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @VirarCaldeirao.started -= instance.OnVirarCaldeirao;
             @VirarCaldeirao.performed -= instance.OnVirarCaldeirao;
             @VirarCaldeirao.canceled -= instance.OnVirarCaldeirao;
+            @MexerComColher.started -= instance.OnMexerComColher;
+            @MexerComColher.performed -= instance.OnMexerComColher;
+            @MexerComColher.canceled -= instance.OnMexerComColher;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -193,5 +222,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnVirarCaldeirao(InputAction.CallbackContext context);
+        void OnMexerComColher(InputAction.CallbackContext context);
     }
 }

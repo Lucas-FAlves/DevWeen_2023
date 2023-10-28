@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Cauldron : MonoBehaviour, IInteractable
+public class Cauldron : MonoBehaviour
 {
     private GameObject[] slots;
     private int currentIndex = 0;
@@ -12,16 +12,23 @@ public class Cauldron : MonoBehaviour, IInteractable
 
     private PlayerInputActions playerInputActions;
     private bool playerIsNear = false;
+
     private PlayerInteraction player;
+    private Spoon spoon; 
 
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private float interactionRange = 2f;
+
+    private PotionSO[] allPotionsSO;
 
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
+
         player = FindObjectOfType<PlayerInteraction>();
+        spoon = FindObjectOfType<Spoon>();
+        allPotionsSO = Resources.LoadAll<PotionSO>("PotionsSO");
 
         slots = new GameObject[transform.childCount];
         cauldronItems = new ItemSO[transform.childCount];
@@ -34,11 +41,44 @@ public class Cauldron : MonoBehaviour, IInteractable
     private void OnEnable()
     {
         playerInputActions.Player.VirarCaldeirao.performed += EmptyCauldron;
+        playerInputActions.Player.MexerComColher.performed += MixCauldron;
     }
 
     private void OnDisable()
     {
         playerInputActions.Player.VirarCaldeirao.performed -= EmptyCauldron;
+        playerInputActions.Player.MexerComColher.performed -= MixCauldron;
+    }
+
+    private void MixCauldron(InputAction.CallbackContext context)
+    {
+        if (!spoon.IsOnHand)
+            return;
+
+        var existingRecipe = CheckIfRecipeMatch();
+
+        Debug.Log(existingRecipe);
+
+    }
+
+    private bool CheckIfRecipeMatch()
+    {
+        bool matched = false;
+        foreach (var potion in allPotionsSO)
+        {
+            for (int i = 0; i < cauldronItems.Length; i++)
+            {          
+                if (cauldronItems[i] != potion.ingredients[i])
+                    break;
+
+                if(i == cauldronItems.Length - 1)
+                    matched = true;
+            }
+
+            if (matched)
+                break;
+        }
+        return matched;
     }
 
     private void EmptyCauldron(InputAction.CallbackContext context)
@@ -67,6 +107,7 @@ public class Cauldron : MonoBehaviour, IInteractable
         currentIndex++;
         return true;
     }
+
     private void Update()
     {
         Collider2D player = Physics2D.OverlapCircle(transform.position, interactionRange, playerMask);
@@ -77,17 +118,4 @@ public class Cauldron : MonoBehaviour, IInteractable
             playerIsNear = true;
     }
 
-    public void Interact(PlayerInteraction player)
-    {
-    }
-
-    public ItemSO GetItemSO()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void DestroyItem()
-    {
-        throw new System.NotImplementedException();
-    }
 }

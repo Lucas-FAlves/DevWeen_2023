@@ -20,7 +20,16 @@
                     "id": "fc1a56eb-d7e1-4580-8174-79f713565e59",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MexerComColher",
+                    "type": "Button",
+                    "id": "7592a7d3-94e2-4ed6-ad03-c67873f0abbc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 }
             ],
@@ -40,10 +49,21 @@
                     "name": "",
                     "id": "14c80f93-268c-4687-9c22-0044f02faddd",
                     "path": "<Keyboard>/k",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "VirarCaldeirao",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "009c2d11-b77f-4be3-afb6-6c633bfac1a4",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MexerComColher",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

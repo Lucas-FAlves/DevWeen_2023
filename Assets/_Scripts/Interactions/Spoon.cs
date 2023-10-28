@@ -1,17 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CircleCollider2D))]
-public class Ingredient : MonoBehaviour, IInteractable
+public class Spoon : MonoBehaviour, IInteractable
 {
-    [SerializeField] ItemSO itemSO;
+    [SerializeField] private ItemSO itemSO;
+    private bool isOnHand = false;
+    public bool IsOnHand => isOnHand;
 
-    private bool isOnHand = true;
-    private void Awake()
+    public void DestroyItem()
     {
-        gameObject.layer = LayerMask.NameToLayer("Interactable");
+        return;
     }
+
+    public ItemSO GetItemSO()
+    {
+        return itemSO;
+    }
+
     public void Interact(PlayerInteraction player)
     {
         if (!isOnHand && !player.IsHoldingItem)
@@ -19,22 +27,12 @@ public class Ingredient : MonoBehaviour, IInteractable
             isOnHand = true;
             transform.parent = player.ItemHolderTransform;
             transform.localPosition = Vector3.zero;
-        } 
+        }
         else
         {
             isOnHand = false;
             transform.parent = null;
             transform.localPosition = player.transform.position;
         }
-    }
-
-    public void DestroyItem()
-    {
-        Destroy(gameObject);
-    }
-
-    public ItemSO GetItemSO()
-    {
-        return itemSO;
     }
 }

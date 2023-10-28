@@ -62,9 +62,9 @@ public class PlayerInteraction : MonoBehaviour
 
         foreach (var collider in collider2Ds)
         {
-            isHoldingItem = true;
             currentInteractable = collider2Ds[0].GetComponent<IInteractable>();
             currentInteractable?.Interact(this);
+            isHoldingItem = true;
         }
     }
 
