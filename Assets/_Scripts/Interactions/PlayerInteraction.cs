@@ -17,6 +17,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private IInteractable currentInteractable;
     private bool isHoldingItem;
+    public bool IsHoldingItem => isHoldingItem && currentInteractable != null;
 
     private void Awake()
     {
