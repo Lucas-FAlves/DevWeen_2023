@@ -9,14 +9,19 @@ public class Flask : MonoBehaviour, IInteractable
     [SerializeField] ItemSO itemSO;
     private bool isOnHand = false;
     public bool IsOnHand => isOnHand;
+    private bool isFull = false;
+    public bool IsFull => isFull;
 
     private PlayerInputActions playerInputActions;
     private PlayerInteraction player;
+
+    private PotionSO[] allPotionsSO;
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Enable();
         player = FindObjectOfType<PlayerInteraction>();
+        allPotionsSO = Resources.LoadAll<PotionSO>("PotionsSO");
     }
 
     public void DestroyItem()
@@ -37,6 +42,7 @@ public class Flask : MonoBehaviour, IInteractable
             transform.parent = player.ItemHolderTransform;
             transform.localPosition = Vector3.zero;
             player.IsHoldingFlask = true;
+            player.SetCurrentFlask(this);
         }
         else
         {
@@ -44,6 +50,14 @@ public class Flask : MonoBehaviour, IInteractable
             transform.parent = null;
             transform.localPosition = player.transform.position;
             player.IsHoldingFlask = false;
+            player.SetCurrentFlask(null);
         }
+    }
+
+    public void FillFlask()
+    {
+        if (isFull) return;
+
+        isFull = true;
     }
 }

@@ -54,12 +54,11 @@ public class Cauldron : MonoBehaviour
 
     private void FillFlask()
     {
-        Debug.Log("Entered");
         if (!playerIsNear || !player.IsHoldingFlask)
             return;
 
-        Debug.Log("Filled");
-
+        var flask = player.GetCurrentFlask();
+        flask.FillFlask();
     }
 
     private void MixCauldron(InputAction.CallbackContext context)
@@ -75,7 +74,7 @@ public class Cauldron : MonoBehaviour
 
 
 
-    private bool CheckIfRecipeMatch()
+    public bool CheckIfRecipeMatch()
     {
         bool matched = false;
         foreach (var potion in allPotionsSO)
