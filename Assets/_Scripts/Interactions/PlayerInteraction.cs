@@ -35,7 +35,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void CheckForInteractions(InputAction.CallbackContext context)
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRange, interactionMask);
+        Collider2D collider2Ds = Physics2D.OverlapCircle(interactionPoint.position, interactionRange, interactionMask);
 
         if (isHoldingItem)
         {
@@ -59,14 +59,12 @@ public class PlayerInteraction : MonoBehaviour
             }
             
         }
-
-        foreach (var collider in collider2Ds)
-        {
-            currentInteractable = collider2Ds[0].GetComponent<IInteractable>();
-            currentInteractable?.Interact(this);
-            isHoldingItem = true;
-        }
+    
+        currentInteractable = collider2Ds.GetComponent<IInteractable>();
+        currentInteractable?.Interact(this);
+        isHoldingItem = true;
     }
+    
 
     public void SetCurentItem(IInteractable interactable)
     {

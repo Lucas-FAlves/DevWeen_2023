@@ -828,7 +828,6 @@ GameObject:
   - component: {fileID: 800244653}
   - component: {fileID: 800244652}
   - component: {fileID: 800244651}
-  - component: {fileID: 800244656}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1039,27 +1038,6 @@ Transform:
   - {fileID: 195978926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &800244656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800244650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbb51b0d7c85b2f4a897b34a2be8f629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionRange: 1.2
-  interactionMask:
-    serializedVersion: 2
-    m_Bits: 64
-  cauldronMask:
-    serializedVersion: 2
-    m_Bits: 128
-  interactionPoint: {fileID: 800244655}
-  ItemHolderTransform: {fileID: 195978926}
 --- !u!1 &1599698743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1181,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778063028}
+  - component: {fileID: 1778063030}
+  - component: {fileID: 1778063029}
   m_Layer: 0
   m_Name: Frente
   m_TagString: Untagged
@@ -1219,12 +1199,45 @@ Transform:
   m_GameObject: {fileID: 1778063027}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 800244655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1778063029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778063027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb51b0d7c85b2f4a897b34a2be8f629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRange: 0.7
+  interactionMask:
+    serializedVersion: 2
+    m_Bits: 64
+  cauldronMask:
+    serializedVersion: 2
+    m_Bits: 128
+  interactionPoint: {fileID: 1778063028}
+  ItemHolderTransform: {fileID: 195978926}
+--- !u!114 &1778063030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778063027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30b74a02ee0e1848af41cd751812b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1928643205
 GameObject:
   m_ObjectHideFlags: 0
