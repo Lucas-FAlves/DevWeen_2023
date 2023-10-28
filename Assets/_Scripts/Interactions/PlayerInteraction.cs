@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour
 
         foreach (var collider in collider2Ds)
         {
-            collider.GetComponent<IInteractable>()?.Interact();
+            collider.GetComponent<IInteractable>()?.Interact(gameObject);
         }
     }
 
