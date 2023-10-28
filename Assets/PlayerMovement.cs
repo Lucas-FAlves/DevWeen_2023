@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerMovement : MonoBehaviour
 {   
@@ -7,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     private Rigidbody2D _rigidbody;
     private Transform _playerTransform;
+    Vector2 movementValue;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {   
         //int moveUp, moveDown, moveLeft, moveRight;
-        Vector2 movementValue = playerControls.ReadValue<Vector2>();
+        movementValue = playerControls.ReadValue<Vector2>();
 
         // if(movementValue.x != 0)
         // {
@@ -44,10 +46,13 @@ public class PlayerMovement : MonoBehaviour
         //         moveDown = 1;
         //     }
         // }
-        
-        _rigidbody.velocity = movementValue * moveSpeed;
+   
     }
 
+    private void FixedUpdate() 
+    {
+        _rigidbody.velocity = movementValue * moveSpeed;
+    }
 
 
 }

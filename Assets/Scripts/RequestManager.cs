@@ -10,11 +10,14 @@ public class RequestManager : MonoBehaviour
     [Header("Configurações dos pedidos")]
     public List<PotionSO> pedidos;
     public int maximoPedidos,maximoRepeticao;
+    public float delayPedidos;
+    private float auxDelay;
+
     public PotionSO CreateRequest(List<PotionSO> pedidos)
-    { 
+    {   
         //Cria indice para saber quantiade de pedidos na fila
         Dictionary<PotionSO, int> qtdPedidos = new Dictionary<PotionSO, int>();
-        List<PotionSO> lista = listaPoc; 
+        List<PotionSO> lista = new List<PotionSO>(listaPoc); 
         foreach (PotionSO elemento in pedidos)
         {
             if (qtdPedidos.ContainsKey(elemento) == false)
@@ -28,15 +31,13 @@ public class RequestManager : MonoBehaviour
             }
         }
         //Define próximo pedido
-        Debug.Log("Antes chamada System");
         System.Random valorSorteado = new System.Random();
-        Debug.Log("Depois chamada System");
-        Debug.Log(lista[valorSorteado.Next(0,lista.Count)]);
         return lista[valorSorteado.Next(0,lista.Count)];
     }
     
     private void Awake() 
-    {
+    {   
+        auxDelay = delayPedidos;
         pedidos.Add(CreateRequest(pedidos));
     }
 
@@ -44,21 +45,16 @@ public class RequestManager : MonoBehaviour
     IEnumerator CreateCall()
     {
         pedidos.Add(CreateRequest(pedidos));
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1f);
     }
 
-    void UpdateRequests(PotionSO pocao)
+    private void Update() 
     {   
-        pedidos.Remove(pocao);
-        if(pedidos.Count<maximoPedidos)
+        auxDelay -= Time.time * Time.deltaTime;
+        if(pedidos.Count<maximoPedidos & auxDelay<=0)
         {
+            auxDelay = delayPedidos;
             StartCoroutine(CreateCall());
-        }
-    }
-    private void Update() {
-        if(pedidos.Count<maximoPedidos)
-        {
-            pedidos.Add(CreateRequest(pedidos));
         }
     }
 }
