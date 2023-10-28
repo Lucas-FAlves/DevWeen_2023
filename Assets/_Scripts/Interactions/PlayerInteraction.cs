@@ -19,6 +19,10 @@ public class PlayerInteraction : MonoBehaviour
     private bool isHoldingItem;
     public bool IsHoldingItem => isHoldingItem && currentInteractable != null;
 
+    [SerializeField] private ItemSO flaskSO;
+
+    [HideInInspector] public bool IsHoldingFlask = false;
+
     private void Awake()
     {
         inputActions = new PlayerInputActions();
@@ -65,6 +69,7 @@ public class PlayerInteraction : MonoBehaviour
             return;
 
         currentInteractable = collider2Ds.GetComponent<IInteractable>();
+        IsHoldingFlask = (currentInteractable.GetItemSO().id == flaskSO.id) ? true : false;
         currentInteractable?.Interact(this);
         isHoldingItem = true;
     }
@@ -73,6 +78,13 @@ public class PlayerInteraction : MonoBehaviour
     public void SetCurentItem(IInteractable interactable)
     {
         currentInteractable = interactable;
+    }
+
+    public ItemSO GetItemSO()
+    {
+        if (currentInteractable == null) return null;
+
+        return currentInteractable?.GetItemSO();
     }
 
     private bool CheckForCauldron()

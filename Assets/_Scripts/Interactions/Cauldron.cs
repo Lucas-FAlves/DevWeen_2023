@@ -14,12 +14,14 @@ public class Cauldron : MonoBehaviour
     private bool playerIsNear = false;
 
     private PlayerInteraction player;
-    private Spoon spoon; 
+    private Spoon spoon;
+    [SerializeField] private ItemSO flaskSO;
 
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private float interactionRange = 2f;
 
     private PotionSO[] allPotionsSO;
+    private bool existingRecipe = false;
 
     private void Awake()
     {
@@ -42,24 +44,34 @@ public class Cauldron : MonoBehaviour
     {
         playerInputActions.Player.VirarCaldeirao.performed += EmptyCauldron;
         playerInputActions.Player.MexerComColher.performed += MixCauldron;
+        playerInputActions.Player.Interact.performed += FillFlask;
     }
 
     private void OnDisable()
     {
         playerInputActions.Player.VirarCaldeirao.performed -= EmptyCauldron;
         playerInputActions.Player.MexerComColher.performed -= MixCauldron;
+        playerInputActions.Player.Interact.performed -= FillFlask;
+    }
+
+    private void FillFlask(InputAction.CallbackContext context)
+    {
+        if (!playerIsNear || !player.IsHoldingFlask)
+            return;
     }
 
     private void MixCauldron(InputAction.CallbackContext context)
     {
-        if (!spoon.IsOnHand)
+        if (!spoon.IsOnHand || !playerIsNear)
             return;
 
-        var existingRecipe = CheckIfRecipeMatch();
+        existingRecipe = CheckIfRecipeMatch();
 
         Debug.Log(existingRecipe);
 
     }
+
+
 
     private bool CheckIfRecipeMatch()
     {
@@ -83,17 +95,14 @@ public class Cauldron : MonoBehaviour
 
     private void EmptyCauldron(InputAction.CallbackContext context)
     {
-        Debug.Log("Passou");
         if (player.IsHoldingItem)
             return;
-
-        Debug.Log("Passou");
 
         if (!playerIsNear)
             return;
 
-        Debug.Log("Passou");
         currentIndex = 0;
+        existingRecipe = false;
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].GetComponent<SpriteRenderer>().sprite = null;
@@ -105,6 +114,11 @@ public class Cauldron : MonoBehaviour
     {
         if (spoon.IsOnHand || !player.IsHoldingItem)
             return false;
+
+        if(item == flaskSO)
+        {
+            Debug.Log("fill potion");
+        }
 
         if (currentIndex >= cauldronItems.Length)
             return false;
