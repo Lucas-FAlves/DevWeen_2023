@@ -9,9 +9,20 @@ public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] private float interactionRange = 2f;
     [SerializeField] private LayerMask interactionMask;
+    [SerializeField] private LayerMask cauldronMask;
     [SerializeField] private Transform interactionPoint;
+    public Transform ItemHolderTransform;
 
     private PlayerInputActions inputActions;
+
+    private IInteractable currentInteractable;
+    private Flask currentFlask = null;
+    private bool isHoldingItem;
+    public bool IsHoldingItem => isHoldingItem && currentInteractable != null;
+
+    [SerializeField] private ItemSO flaskSO;
+
+    [HideInInspector] public bool IsHoldingFlask = false;
 
     private void Awake()
     {
@@ -29,12 +40,66 @@ public class PlayerInteraction : MonoBehaviour
     }
     private void CheckForInteractions(InputAction.CallbackContext context)
     {
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(interactionPoint.position, interactionRange, interactionMask);
+        Collider2D collider2Ds = Physics2D.OverlapCircle(interactionPoint.position, interactionRange, interactionMask);
 
-        foreach (var collider in collider2Ds)
+        if (isHoldingItem)
         {
-            collider.GetComponent<IInteractable>()?.Interact(gameObject);
+            if(CheckForCauldron())
+            {
+                var cauldron = Physics2D.OverlapCircle(interactionPoint.position, interactionRange, cauldronMask);
+                bool placed = cauldron.GetComponent<Cauldron>().PlaceItemOnCauldron(currentInteractable?.GetItemSO());
+
+                if (!placed) return;
+
+                currentInteractable.DestroyItem();
+                currentInteractable = null;
+                isHoldingItem = false;
+                return;
+            } 
+            else
+            {
+                currentInteractable?.Interact(this);
+                isHoldingItem = false;
+                currentInteractable = null;
+                return;
+            }
+            
         }
+
+        if (collider2Ds == null)
+            return;
+
+        currentInteractable = collider2Ds.GetComponent<IInteractable>();
+        currentInteractable?.Interact(this);
+        isHoldingItem = true;
+    }
+    
+
+    public void SetCurentItem(IInteractable interactable)
+    {
+        currentInteractable = interactable;
+    }
+
+    public ItemSO GetItemSO()
+    {
+        if (currentInteractable == null) return null;
+
+        return currentInteractable?.GetItemSO();
+    }
+
+    public void SetCurrentFlask(Flask flask)
+    {
+        currentFlask = flask;
+    }
+    public Flask GetCurrentFlask()
+    {
+        return currentFlask;
+    }
+
+    private bool CheckForCauldron()
+    {
+        var cauldron = Physics2D.OverlapCircle(interactionPoint.position, interactionRange, cauldronMask);
+        return (cauldron == null) ? false : true;
     }
 
     private void OnDrawGizmosSelected()
