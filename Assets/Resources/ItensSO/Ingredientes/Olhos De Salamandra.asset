@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7d7d80c49357cc49854319df2c161f9, type: 3}
-  m_Name: "P\xF3Rosa"
+  m_Name: Olhos De Salamandra
   m_EditorClassIdentifier: 
-  id: 5
+  id: 4
   anim: {fileID: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 1271633414, guid: d7267618f59d34a4b8b483655655f340, type: 3}

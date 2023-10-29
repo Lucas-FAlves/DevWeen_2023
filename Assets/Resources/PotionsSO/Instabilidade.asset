@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91b715c5fef5a648a2c3c25b777b603, type: 3}
+  m_Name: Instabilidade
+  m_EditorClassIdentifier: 
+  id: 7
+  ingredients:
+  - {fileID: 11400000, guid: bc476d7af054a3f4087b1fbc5ca45041, type: 2}
+  - {fileID: 11400000, guid: d7676effc7e97494fb8038139b9fa54f, type: 2}
+  - {fileID: 11400000, guid: ce20294db7d788b4fa990bb1b4801dba, type: 2}
+  reqTime: 0
+  potionSprite: {fileID: 49549750, guid: a9a2b8935a37bf54cb62cb02d21e9f79, type: 3}

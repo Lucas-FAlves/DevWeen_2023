@@ -624,7 +624,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6bee7e51a902941b1d89a72a1ac5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - audioSource: {fileID: 0}
+    name: pedido
+    clip: {fileID: 8300000, guid: d113c3445d4a07e4a8e32f7006b1d899, type: 3}
+    volume: 0.697
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: bat
+    clip: {fileID: 8300000, guid: b47c38b5d34bfa54e9b9252b1d1a9a48, type: 3}
+    volume: 0.704
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: eyeflop
+    clip: {fileID: 8300000, guid: b36b862feaa800a47a35eabcd3515fd4, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: footsteps
+    clip: {fileID: 8300000, guid: 9f5211cebe44f9b45a237525afd990c4, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: mandrake
+    clip: {fileID: 8300000, guid: 323ee9ff06ca51348a28173870fe1619, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: cauldron
+    clip: {fileID: 8300000, guid: da55168303cdd46488b717f08020576b, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
 --- !u!4 &1106491190
 Transform:
   m_ObjectHideFlags: 0
