@@ -661,6 +661,30 @@ MonoBehaviour:
     volume: 0.691
     pitch: 1
     loop: 0
+  - audioSource: {fileID: 0}
+    name: frasco
+    clip: {fileID: 8300000, guid: 1f616f2fd81563c4e97074d19955cdec, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: entrega
+    clip: {fileID: 8300000, guid: d32b07e996569a3428f6cd6bcadba503, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: falha
+    clip: {fileID: 8300000, guid: 73c1b9d11d2c8114a878c989374e9ac3, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: enchendo
+    clip: {fileID: 8300000, guid: 4125628ad954bdc458ccad5d574e1d56, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
 --- !u!4 &1106491190
 Transform:
   m_ObjectHideFlags: 0
