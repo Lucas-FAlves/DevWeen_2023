@@ -22,6 +22,7 @@ public class Request : MonoBehaviour
         indredientsImage[1].sprite = potionSO.ingredients[1].sprite;
         indredientsImage[2].sprite = potionSO.ingredients[2].sprite;
         slider.maxValue = potionSO.reqTime;
+        slider.value = slider.maxValue;
         currentTime = potionSO.reqTime;
         start = true;
     }
@@ -32,6 +33,14 @@ public class Request : MonoBehaviour
             return;
 
         slider.value -= Time.deltaTime;
+        currentTime -= Time.deltaTime;
+
+        if (currentTime <= 0)
+        {
+            LivesManager.OnRequestFailed?.Invoke();
+            RequestManager.OnRequestFailed?.Invoke();
+            Destroy(this.gameObject);
+        }
 
 
     }

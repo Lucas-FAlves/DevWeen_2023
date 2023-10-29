@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc476d7af054a3f4087b1fbc5ca45041, type: 2}
   - {fileID: 11400000, guid: ce20294db7d788b4fa990bb1b4801dba, type: 2}
   - {fileID: 11400000, guid: 9c4cf0e1195fd4140b7c24640bf8e1b8, type: 2}
-  reqTime: 0
+  reqTime: 30
   potionSprite: {fileID: 921946851, guid: 55616c44101dd354e8eaa7b57545ce91, type: 3}
