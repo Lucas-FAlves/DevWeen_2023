@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8015507000159521629}
   - component: {fileID: 2927125591162581798}
   - component: {fileID: 8930591588032321848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Morcego_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 952043907, guid: 991f40348186b014496600e705733fb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

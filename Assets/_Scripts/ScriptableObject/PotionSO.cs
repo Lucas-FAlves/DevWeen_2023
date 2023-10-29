@@ -9,5 +9,7 @@ public class PotionSO : ScriptableObject
     public ItemSO[] ingredients;
     public float reqTime;
     public Sprite potionSprite;
+    public float Score;
+    public string audioString;
     //public BaseEffect effect
 }

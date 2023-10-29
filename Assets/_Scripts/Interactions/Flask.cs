@@ -8,6 +8,10 @@ public class Flask : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO itemSO;
     [SerializeField] ItemSO wrongPotion;
+    [SerializeField] PotionSO wrongActualPotionSO;
+
+    private PotionSO currentPotionSO;
+    public PotionSO CurrentPotionSO => currentPotionSO;
 
     private bool isOnHand = false;
     private SpriteRenderer sr;
@@ -64,6 +68,7 @@ public class Flask : MonoBehaviour, IInteractable
             transform.localPosition = Vector3.zero;
             player.IsHoldingFlask = true;
             player.SetCurrentFlask(this);
+            AudioManager.instance.PlaySound(itemSO.audioString);
         }
         else
         {
@@ -75,17 +80,33 @@ public class Flask : MonoBehaviour, IInteractable
         }
     }
 
-    public void FillFlask(Sprite potionSprite)
+    public void FillFlask(int id)
     {
+        //SetCurrentPotionSO,
+        foreach(var potion in allPotionsSO)
+        {
+            if (potion.id == id)
+            {
+                currentPotionSO = potion;
+                break;
+            }            
+        }
+
+        currentPotionSO = wrongActualPotionSO;
+
         if (isFull) return;
         isFull = true;
-
-        if (potionSprite != null)
+        if (currentPotionSO != null)
         {
+            AudioManager.instance.PlaySound(currentPotionSO.audioString);
             rightPotion = true;
-            sr.sprite = potionSprite;
-        } 
-        else sr.sprite = wrongPotion.sprite;
+            sr.sprite = currentPotionSO.potionSprite;
+        }
+        else
+        {
+            AudioManager.instance.PlaySound("falha");
+            sr.sprite = wrongPotion.sprite;
+        }
 
     }
 }

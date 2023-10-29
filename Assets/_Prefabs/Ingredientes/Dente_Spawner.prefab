@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9110790206150165593}
   - component: {fileID: 194188437681796107}
   - component: {fileID: 1240739289873244476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dente_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1635adac8f8553e41b4b7d95984268d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class Cauldron : MonoBehaviour
 {
@@ -21,8 +22,11 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private float interactionRange = 2f;
 
     private PotionSO[] allPotionsSO;
-    private PotionSO currentPotion = null;
+    private PotionSO currentPotion;
+    [SerializeField] private PotionSO wrongPotion;
     private bool existingRecipe = false;
+
+    private AudioClip cauldronAudio;
 
     private void Awake()
     {
@@ -39,6 +43,7 @@ public class Cauldron : MonoBehaviour
         {
             slots[i] = transform.GetChild(i).gameObject;
         }
+        currentPotion = wrongPotion;
     }
 
     private void OnEnable()
@@ -59,7 +64,7 @@ public class Cauldron : MonoBehaviour
             return;
 
         var flask = player.GetCurrentFlask();
-        flask.FillFlask(currentPotion?.potionSprite);
+        flask.FillFlask(currentPotion.id);
     }
 
     private void MixCauldron(InputAction.CallbackContext context)
@@ -89,11 +94,12 @@ public class Cauldron : MonoBehaviour
             if (matched)
             {
                 currentPotion = potion;
+                
                 break;
             } 
             else
             {
-                currentPotion = null;
+                currentPotion = wrongPotion;
             }
         }
         return matched;
@@ -110,6 +116,8 @@ public class Cauldron : MonoBehaviour
         currentIndex = 0;
         existingRecipe = false;
 
+        AudioManager.instance.StopSound("cauldron");
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].GetComponent<SpriteRenderer>().sprite = null;
@@ -122,7 +130,10 @@ public class Cauldron : MonoBehaviour
         if (spoon.IsOnHand || !player.IsHoldingItem)
             return false;
 
-        if(item == flaskSO)
+        if(!AudioManager.instance.IsPlaying("cauldron"))
+            AudioManager.instance.PlaySound("cauldron");
+
+        if (item == flaskSO)
         {
             FillFlask();
             return false;
