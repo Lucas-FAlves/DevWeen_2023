@@ -566,8 +566,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720853268}
+  - component: {fileID: 1720853269}
+  - component: {fileID: 1720853270}
   m_Layer: 5
-  m_Name: Pedidos
+  m_Name: PedidosManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,6 +594,45 @@ RectTransform:
   m_AnchoredPosition: {x: 962.79584, y: -164.939}
   m_SizeDelta: {x: 1805.696, y: 183.289}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1720853269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720853267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe15b012e8c05940904446119fa1158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requestPrefab: {fileID: 1472402295452520279, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+  maxRequests: 5
+  timeBetweenRequests: 5
+--- !u!114 &1720853270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720853267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 50
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 140, y: 120}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1930699511
 GameObject:
   m_ObjectHideFlags: 0
