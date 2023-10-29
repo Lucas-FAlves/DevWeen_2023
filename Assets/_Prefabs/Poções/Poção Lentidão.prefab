@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8402314066446605434}
   - component: {fileID: 2681520401079404661}
   - component: {fileID: 6366868146428976421}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Po\xE7\xE3o Lentid\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

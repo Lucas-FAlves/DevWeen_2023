@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8015507000159521629}
   - component: {fileID: 2927125591162581798}
   - component: {fileID: 8930591588032321848}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Morcego_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

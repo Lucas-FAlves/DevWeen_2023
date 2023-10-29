@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8765366021135556393}
   - component: {fileID: 6120834371560726725}
   - component: {fileID: 3653707891607563152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Po\xE7\xE3o de Fuma\xE7a"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

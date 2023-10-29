@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9110790206150165593}
   - component: {fileID: 194188437681796107}
   - component: {fileID: 1240739289873244476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dente_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
