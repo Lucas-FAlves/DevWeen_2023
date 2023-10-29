@@ -15,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private PlayerInputActions inputActions;
 
-    private IInteractable currentInteractable;
+    public IInteractable currentInteractable;
     private Flask currentFlask = null;
     private bool isHoldingItem;
     public bool IsHoldingItem => isHoldingItem && currentInteractable != null;
