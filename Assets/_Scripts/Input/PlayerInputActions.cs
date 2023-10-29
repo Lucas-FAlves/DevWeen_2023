@@ -62,6 +62,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Lixo"",
+                    ""type"": ""Button"",
+                    ""id"": ""885ee33f-ef75-4995-8368-56ed8a802516"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d59dbf2d-b87e-43b4-a29f-08f68dee6aad"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lixo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_VirarCaldeirao = m_Player.FindAction("VirarCaldeirao", throwIfNotFound: true);
         m_Player_MexerComColher = m_Player.FindAction("MexerComColher", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Lixo = m_Player.FindAction("Lixo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -229,6 +250,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_VirarCaldeirao;
     private readonly InputAction m_Player_MexerComColher;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Lixo;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -237,6 +259,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @VirarCaldeirao => m_Wrapper.m_Player_VirarCaldeirao;
         public InputAction @MexerComColher => m_Wrapper.m_Player_MexerComColher;
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Lixo => m_Wrapper.m_Player_Lixo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +281,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Lixo.started += instance.OnLixo;
+            @Lixo.performed += instance.OnLixo;
+            @Lixo.canceled += instance.OnLixo;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -274,6 +300,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Lixo.started -= instance.OnLixo;
+            @Lixo.performed -= instance.OnLixo;
+            @Lixo.canceled -= instance.OnLixo;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -297,5 +326,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnVirarCaldeirao(InputAction.CallbackContext context);
         void OnMexerComColher(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnLixo(InputAction.CallbackContext context);
     }
 }

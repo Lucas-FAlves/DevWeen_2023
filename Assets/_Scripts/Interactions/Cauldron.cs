@@ -21,6 +21,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private float interactionRange = 2f;
 
     private PotionSO[] allPotionsSO;
+    private PotionSO currentPotion = null;
     private bool existingRecipe = false;
 
     private void Awake()
@@ -58,7 +59,7 @@ public class Cauldron : MonoBehaviour
             return;
 
         var flask = player.GetCurrentFlask();
-        flask.FillFlask();
+        flask.FillFlask(currentPotion?.potionSprite);
     }
 
     private void MixCauldron(InputAction.CallbackContext context)
@@ -71,9 +72,6 @@ public class Cauldron : MonoBehaviour
         Debug.Log(existingRecipe);
 
     }
-
-
-
     public bool CheckIfRecipeMatch()
     {
         bool matched = false;
@@ -89,7 +87,14 @@ public class Cauldron : MonoBehaviour
             }
 
             if (matched)
+            {
+                currentPotion = potion;
                 break;
+            } 
+            else
+            {
+                currentPotion = null;
+            }
         }
         return matched;
     }
@@ -104,6 +109,7 @@ public class Cauldron : MonoBehaviour
 
         currentIndex = 0;
         existingRecipe = false;
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].GetComponent<SpriteRenderer>().sprite = null;
@@ -143,6 +149,12 @@ public class Cauldron : MonoBehaviour
             playerIsNear = false;
         else
             playerIsNear = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, interactionRange);
     }
 
 }

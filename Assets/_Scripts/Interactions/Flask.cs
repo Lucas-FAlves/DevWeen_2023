@@ -7,10 +7,16 @@ using UnityEngine.InputSystem;
 public class Flask : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO itemSO;
+    [SerializeField] ItemSO wrongPotion;
+
     private bool isOnHand = false;
+    private SpriteRenderer sr;
     public bool IsOnHand => isOnHand;
     private bool isFull = false;
     public bool IsFull => isFull;
+
+    private bool rightPotion = false;
+    public bool RightPotion => rightPotion;
 
     private PlayerInputActions playerInputActions;
     private PlayerInteraction player;
@@ -22,11 +28,22 @@ public class Flask : MonoBehaviour, IInteractable
         playerInputActions.Enable();
         player = FindObjectOfType<PlayerInteraction>();
         allPotionsSO = Resources.LoadAll<PotionSO>("PotionsSO");
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void DestroyItem()
     {
-        Destroy(gameObject);
+        var trash = FindObjectOfType<MagicTrash>();
+        if (trash.PlayerIsNear)
+        {
+            isFull = false;
+            sr.sprite = itemSO.sprite;
+        } 
+        else
+        {
+            //Invoke entrega event
+            Destroy(gameObject);
+        }
     }
 
     public ItemSO GetItemSO()
@@ -36,6 +53,10 @@ public class Flask : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteraction player)
     {
+        var trash = FindObjectOfType<MagicTrash>();
+        if (trash.PlayerIsNear)
+            return;
+
         if (!isOnHand && !player.IsHoldingItem)
         {
             isOnHand = true;
@@ -54,10 +75,17 @@ public class Flask : MonoBehaviour, IInteractable
         }
     }
 
-    public void FillFlask()
+    public void FillFlask(Sprite potionSprite)
     {
         if (isFull) return;
-
         isFull = true;
+
+        if (potionSprite != null)
+        {
+            rightPotion = true;
+            sr.sprite = potionSprite;
+        } 
+        else sr.sprite = wrongPotion.sprite;
+
     }
 }
