@@ -13,7 +13,20 @@ public class MainMenu : MonoBehaviour
     }
 
     public void StartGame()
-    {
+    {   
+        if(AudioManager.instance.IsPlaying("musica menu"))
+        {
+            AudioManager.instance.StopSound("musica menu");
+        }
+
         SceneManager.LoadScene(newScene);
+    }
+
+    private void Start() 
+    {   
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        { 
+            AudioManager.instance.PlaySound("musica menu");
+        }
     }
 }
