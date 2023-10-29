@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Progress;
@@ -26,7 +27,14 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private PotionSO wrongPotion;
     private bool existingRecipe = false;
 
-    private AudioClip cauldronAudio;
+    private Animator anim;
+    [SerializeField] private AnimatorController animDerramando;
+    [SerializeField] private AnimatorController animMarrom;
+    [SerializeField] private AnimatorController animRosa;
+    [SerializeField] private AnimatorController animRoxo;
+    [SerializeField] private AnimatorController animVermelho;
+    [SerializeField] private AnimatorController animAgua;
+
 
     private void Awake()
     {
@@ -36,6 +44,7 @@ public class Cauldron : MonoBehaviour
         player = FindObjectOfType<PlayerInteraction>();
         spoon = FindObjectOfType<Spoon>();
         allPotionsSO = Resources.LoadAll<PotionSO>("PotionsSO");
+        anim = GetComponent<Animator>();
 
         slots = new GameObject[transform.childCount];
         cauldronItems = new ItemSO[transform.childCount];
@@ -73,8 +82,32 @@ public class Cauldron : MonoBehaviour
             return;
 
         existingRecipe = CheckIfRecipeMatch();
+        if (existingRecipe)
+        {
+            switch(currentPotion.id)
+            {
+                case 6:
+                    anim.runtimeAnimatorController = animVermelho;
+                    break;
+                case 7:
+                    anim.runtimeAnimatorController = animRosa;
+                    break;
+                case 8:
+                    anim.runtimeAnimatorController = animRoxo;
+                    break;
+                case 9:
+                    anim.runtimeAnimatorController = animAgua;
+                    break;
+                case 10:
+                    anim.runtimeAnimatorController = animRosa;
+                    break;
+            }
 
-        Debug.Log(existingRecipe);
+        } 
+        else
+        {
+
+        }
 
     }
     public bool CheckIfRecipeMatch()
@@ -112,6 +145,8 @@ public class Cauldron : MonoBehaviour
 
         if (!playerIsNear)
             return;
+
+        anim.runtimeAnimatorController = animDerramando;
 
         currentIndex = 0;
         existingRecipe = false;

@@ -41,8 +41,9 @@ public class FinishStation : MonoBehaviour
         if(currentFlask == null) return;
 
         RequestManager.DeliverRequest(currentFlask.CurrentPotionSO);
-
-
+        currentFlask.gameObject.SetActive(false);
+        player.SetCurrentFlask(null);
+        player.SetCurentItem(null);
     }
 
     private void Update()

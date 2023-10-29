@@ -45,7 +45,8 @@ public class Flask : MonoBehaviour, IInteractable
         } 
         else
         {
-            //Invoke entrega event
+            isFull = false;
+            sr.sprite = itemSO.sprite;
             Destroy(gameObject);
         }
     }

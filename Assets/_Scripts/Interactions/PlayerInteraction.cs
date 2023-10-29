@@ -93,6 +93,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     public Flask GetCurrentFlask()
     {
+        //if (currentFlask == null) return null;
         return currentFlask;
     }
 
