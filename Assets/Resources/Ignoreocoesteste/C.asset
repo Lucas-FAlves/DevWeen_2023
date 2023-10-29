@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 100
   ingredients: []
+  reqTime: 2
