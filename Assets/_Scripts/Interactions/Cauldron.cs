@@ -59,7 +59,7 @@ public class Cauldron : MonoBehaviour
             return;
 
         var flask = player.GetCurrentFlask();
-        flask.FillFlask(currentPotion?.potionSprite);
+        flask.FillFlask(currentPotion);
     }
 
     private void MixCauldron(InputAction.CallbackContext context)

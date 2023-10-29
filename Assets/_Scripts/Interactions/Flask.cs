@@ -9,6 +9,9 @@ public class Flask : MonoBehaviour, IInteractable
     [SerializeField] ItemSO itemSO;
     [SerializeField] ItemSO wrongPotion;
 
+    private PotionSO currentPotionSO;
+    public PotionSO CurrentPotionSO => currentPotionSO;
+
     private bool isOnHand = false;
     private SpriteRenderer sr;
     public bool IsOnHand => isOnHand;
@@ -75,15 +78,17 @@ public class Flask : MonoBehaviour, IInteractable
         }
     }
 
-    public void FillFlask(Sprite potionSprite)
+    public void FillFlask(PotionSO potionFilledSO)
     {
+        //SetCurrentPotionSO,
+        Debug.Log(potionFilledSO.name + "!!!!");
+        currentPotionSO = potionFilledSO;
         if (isFull) return;
         isFull = true;
-
-        if (potionSprite != null)
+        if (potionFilledSO != null)
         {
             rightPotion = true;
-            sr.sprite = potionSprite;
+            sr.sprite = potionFilledSO.potionSprite;
         } 
         else sr.sprite = wrongPotion.sprite;
 

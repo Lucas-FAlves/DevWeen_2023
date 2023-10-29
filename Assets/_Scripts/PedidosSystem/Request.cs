@@ -11,9 +11,12 @@ public class Request : MonoBehaviour
     private bool start = false;
 
     private float currentTime;
+    private PotionSO currentPotionRequest;
+    public PotionSO CurrentPotionRequest => currentPotionRequest;
 
     public void StartRequest(PotionSO potionSO)
     {
+        currentPotionRequest = potionSO;
         potionImage.sprite = potionSO.potionSprite;
         indredientsImage[0].sprite = potionSO.ingredients[0].sprite;
         indredientsImage[1].sprite = potionSO.ingredients[1].sprite;
