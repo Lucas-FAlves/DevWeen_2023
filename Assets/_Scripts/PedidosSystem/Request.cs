@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Request : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Request : MonoBehaviour
 
     public void StartRequest(PotionSO potionSO)
     {
+        AudioManager.instance.PlaySound("pedido");
         currentPotionRequest = potionSO;
         potionImage.sprite = potionSO.potionSprite;
         indredientsImage[0].sprite = potionSO.ingredients[0].sprite;

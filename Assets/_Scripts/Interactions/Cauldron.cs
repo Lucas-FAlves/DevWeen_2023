@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class Cauldron : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Cauldron : MonoBehaviour
     private PotionSO[] allPotionsSO;
     private PotionSO currentPotion = null;
     private bool existingRecipe = false;
+
+    private AudioClip cauldronAudio;
 
     private void Awake()
     {
@@ -110,6 +113,8 @@ public class Cauldron : MonoBehaviour
         currentIndex = 0;
         existingRecipe = false;
 
+        AudioManager.instance.StopSound("cauldron");
+
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i].GetComponent<SpriteRenderer>().sprite = null;
@@ -122,7 +127,10 @@ public class Cauldron : MonoBehaviour
         if (spoon.IsOnHand || !player.IsHoldingItem)
             return false;
 
-        if(item == flaskSO)
+        if(!AudioManager.instance.IsPlaying("cauldron"))
+            AudioManager.instance.PlaySound("cauldron");
+
+        if (item == flaskSO)
         {
             FillFlask();
             return false;

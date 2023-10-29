@@ -26,6 +26,7 @@ public class Ingredient : MonoBehaviour, IInteractable
             transform.parent = null;
             transform.localPosition = player.transform.position;
         }
+        AudioManager.instance.PlaySound(itemSO.audioString);
     }
 
     public void DestroyItem()

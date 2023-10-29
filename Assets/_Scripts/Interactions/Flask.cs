@@ -76,6 +76,7 @@ public class Flask : MonoBehaviour, IInteractable
             player.IsHoldingFlask = false;
             player.SetCurrentFlask(null);
         }
+        AudioManager.instance.PlaySound(itemSO.audioString);
     }
 
     public void FillFlask(PotionSO potionFilledSO)
@@ -87,6 +88,7 @@ public class Flask : MonoBehaviour, IInteractable
         isFull = true;
         if (potionFilledSO != null)
         {
+            AudioManager.instance.PlaySound(potionFilledSO.audioString);
             rightPotion = true;
             sr.sprite = potionFilledSO.potionSprite;
         } 

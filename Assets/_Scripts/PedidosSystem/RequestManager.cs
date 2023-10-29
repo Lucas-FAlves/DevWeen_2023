@@ -63,7 +63,7 @@ public class RequestManager : MonoBehaviour
         {
             if(request.CurrentPotionRequest == potionSO)
             {
-                // Score++
+                ScoreManager.OnPotionScore?.Invoke(potionSO.Score);
                 Debug.Log("potion " + potionSO.id);
                 break;
             }

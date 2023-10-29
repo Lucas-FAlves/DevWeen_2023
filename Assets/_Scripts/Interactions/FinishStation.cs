@@ -40,8 +40,7 @@ public class FinishStation : MonoBehaviour
 
         if(currentFlask == null) return;
 
-        Debug.Log("Deliver Request ->" + currentFlask.CurrentPotionSO.id);
-        //RequestManager.DeliverRequest()
+        RequestManager.DeliverRequest(currentFlask.CurrentPotionSO);
 
     }
 

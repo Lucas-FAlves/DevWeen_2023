@@ -32,6 +32,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public bool IsPlaying(string name)
+    {
+        Sound s = FindSound(name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return false;
+        }
+        return s.audioSource.isPlaying;
+    }
     public void PlaySound (string name)
     {
         Sound s = FindSound(name);

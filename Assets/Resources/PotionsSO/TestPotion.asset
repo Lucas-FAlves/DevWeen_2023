@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad30ac527a4ce364ca8d47da9471a834, type: 2}
   reqTime: 30
   potionSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  Score: 30
