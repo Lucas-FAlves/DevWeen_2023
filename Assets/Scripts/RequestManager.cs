@@ -7,6 +7,8 @@ public class RequestManager : MonoBehaviour
     [Header("Poções")]
     public List<PotionSO> listaPoc;
 
+    private Dictionary<PotionSO, float> timerPedidos = new Dictionary<PotionSO, float>();
+    
     [Header("Configurações dos pedidos")]
     public List<PotionSO> pedidos;
     public int maximoPedidos,maximoRepeticao;
@@ -46,14 +48,13 @@ public class RequestManager : MonoBehaviour
     {   
         PotionSO pocao = CreateRequest(pedidos);
         pedidos.Add(pocao);
+        timerPedidos.Add(pocao, pocao.reqTime);
         yield return new WaitForSeconds(0f);
     }
 
     private void Update() 
     {   
         //Cooldown para adicionar novos pedidos na lista de pedidos 
-        Debug.Log(pedidos.Count);
-
         if(pedidos.Count<maximoPedidos)
         {   
             auxDelay -= Time.deltaTime;
@@ -64,15 +65,18 @@ public class RequestManager : MonoBehaviour
             }
         }
 
+        
         //Timer por pedido
         if(pedidos.Count != 0)
         {
-            foreach(PotionSO elemento in pedidos)
-            {
-                elemento.reqTime -= Time.deltaTime;
-                if(elemento.reqTime <= 0)
-                {
+            foreach(var elemento in pedidos)
+            {    
+                timerPedidos[elemento] -= Time.deltaTime;
+                if(timerPedidos[elemento] <= 0)
+                {   
+                    Debug.Log(elemento);
                     pedidos.Remove(elemento);
+                    timerPedidos.Remove(elemento);
                 }
             }
         }
