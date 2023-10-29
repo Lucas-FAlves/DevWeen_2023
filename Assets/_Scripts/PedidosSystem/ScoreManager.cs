@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
     private void ScorePoints(float points)
     {
         currentPoints += points;
+        SaveHighScore.SetLastScore(currentPoints);
         textComponent.text = "Points: " + currentPoints.ToString("0.00");
     }
 
