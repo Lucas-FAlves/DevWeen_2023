@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6459673349804960748}
   - component: {fileID: 2597345057187014352}
   - component: {fileID: 512529434608956426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Po\xE7\xE3o Velocidade"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

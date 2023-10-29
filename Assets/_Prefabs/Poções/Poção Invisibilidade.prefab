@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4215822012473860127}
   - component: {fileID: 7239167084277407134}
   - component: {fileID: 8567959258428559703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Po\xE7\xE3o Invisibilidade"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

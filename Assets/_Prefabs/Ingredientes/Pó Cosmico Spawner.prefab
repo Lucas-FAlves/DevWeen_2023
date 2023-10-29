@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2990501409928435711}
   - component: {fileID: 2882401098720688064}
   - component: {fileID: 4571850416176949381}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "P\xF3 Cosmico Spawner"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
