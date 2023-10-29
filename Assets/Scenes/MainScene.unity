@@ -6106,6 +6106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2778802305654320161, guid: c0ce72e30194de74cbfe25be0fe15613, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c99e1cdbeaf21cc409aa0de9c9b5ba89, type: 3}
     - target: {fileID: 7209833917767952891, guid: c0ce72e30194de74cbfe25be0fe15613, type: 3}
       propertyPath: m_Name
       value: Flask
