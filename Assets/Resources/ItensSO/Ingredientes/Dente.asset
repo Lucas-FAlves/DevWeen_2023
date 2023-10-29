@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Dente
   m_EditorClassIdentifier: 
   id: 1
+  anim: {fileID: 0}
   sprite: {fileID: 1803259995, guid: 748a7f6062939c34fbc637de2757d999, type: 3}
+  audioString: dente
