@@ -43,18 +43,39 @@ public class RequestManager : MonoBehaviour
 
     // Update is called once per frame
     IEnumerator CreateCall()
-    {
-        pedidos.Add(CreateRequest(pedidos));
-        yield return new WaitForSeconds(1f);
+    {   
+        PotionSO pocao = CreateRequest(pedidos);
+        pedidos.Add(pocao);
+        yield return new WaitForSeconds(0f);
     }
 
     private void Update() 
     {   
-        auxDelay -= Time.time * Time.deltaTime;
-        if(pedidos.Count<maximoPedidos & auxDelay<=0)
-        {
-            auxDelay = delayPedidos;
-            StartCoroutine(CreateCall());
+        //Cooldown para adicionar novos pedidos na lista de pedidos 
+        Debug.Log(pedidos.Count);
+
+        if(pedidos.Count<maximoPedidos)
+        {   
+            auxDelay -= Time.deltaTime;
+            if(auxDelay<=0)
+            {
+                auxDelay = delayPedidos;
+                StartCoroutine(CreateCall());
+            }
         }
+
+        //Timer por pedido
+        if(pedidos.Count != 0)
+        {
+            foreach(PotionSO elemento in pedidos)
+            {
+                elemento.reqTime -= Time.deltaTime;
+                if(elemento.reqTime <= 0)
+                {
+                    pedidos.Remove(elemento);
+                }
+            }
+        }
+        
     }
 }
