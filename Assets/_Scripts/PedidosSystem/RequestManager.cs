@@ -64,6 +64,7 @@ public class RequestManager : MonoBehaviour
             if(request.CurrentPotionRequest == potionSO)
             {
                 ScoreManager.OnPotionScore?.Invoke(potionSO.Score);
+                AudioManager.instance.PlaySound("entrega");
                 break;
             }
         }
@@ -74,6 +75,7 @@ public class RequestManager : MonoBehaviour
     public void RequestFailed()
     {
         currentRequests = transform.childCount;
+        AudioManager.instance.PlaySound("falha");
     }
 
 

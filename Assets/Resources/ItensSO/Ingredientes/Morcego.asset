@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 2
   anim: {fileID: 0}
   sprite: {fileID: 1437954589, guid: c78d5c03b747a0f49a28b376929a3523, type: 3}
-  audioString: bats
+  audioString: bat

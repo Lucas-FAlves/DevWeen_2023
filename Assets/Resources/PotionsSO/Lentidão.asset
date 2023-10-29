@@ -20,3 +20,4 @@ MonoBehaviour:
   reqTime: 30
   potionSprite: {fileID: -781621585, guid: d1dd52cab15427d45b97e20a02bab54b, type: 3}
   Score: 30
+  audioString: enchendo

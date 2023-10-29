@@ -92,6 +92,7 @@ public class Cauldron : MonoBehaviour
             if (matched)
             {
                 currentPotion = potion;
+                
                 break;
             } 
             else
