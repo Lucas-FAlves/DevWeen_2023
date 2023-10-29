@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 980c745f86d6c2b40b2dc1753d6dbd16, type: 2}
+  wrongPotion: {fileID: 0}
 --- !u!1 &195978925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,11 +1289,23 @@ PrefabInstance:
       value: Pedido (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1811045637784912697, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811045637784912697, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1517,11 +1530,23 @@ PrefabInstance:
       value: Pedido
       objectReference: {fileID: 0}
     - target: {fileID: 1811045637784912697, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811045637784912697, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7028833045354274894, guid: 09465b6bb26151449a307d835dee4f92, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
