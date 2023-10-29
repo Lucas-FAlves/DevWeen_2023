@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5573142787685586287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3361901951901300032}
+  - component: {fileID: 3449441177015690240}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3361901951901300032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573142787685586287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7602923, y: -0.16560292, z: 0.06625402}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3449441177015690240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573142787685586287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6bee7e51a902941b1d89a72a1ac5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioSource: {fileID: 0}
+    name: pedido
+    clip: {fileID: 8300000, guid: d113c3445d4a07e4a8e32f7006b1d899, type: 3}
+    volume: 0.697
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: bat
+    clip: {fileID: 8300000, guid: b47c38b5d34bfa54e9b9252b1d1a9a48, type: 3}
+    volume: 0.704
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: eyeflop
+    clip: {fileID: 8300000, guid: b36b862feaa800a47a35eabcd3515fd4, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: footsteps
+    clip: {fileID: 8300000, guid: 9f5211cebe44f9b45a237525afd990c4, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: mandrake
+    clip: {fileID: 8300000, guid: 323ee9ff06ca51348a28173870fe1619, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: cauldron
+    clip: {fileID: 8300000, guid: da55168303cdd46488b717f08020576b, type: 3}
+    volume: 0.691
+    pitch: 1
+    loop: 0

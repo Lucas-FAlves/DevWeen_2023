@@ -12,6 +12,11 @@ public class Ingredient : MonoBehaviour, IInteractable
     {
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
+
+    private void Start()
+    {
+        AudioManager.instance.PlaySound(itemSO.audioString);
+    }
     public void Interact(PlayerInteraction player)
     {
         if (!isOnHand && !player.IsHoldingItem)
@@ -19,6 +24,7 @@ public class Ingredient : MonoBehaviour, IInteractable
             isOnHand = true;
             transform.parent = player.ItemHolderTransform;
             transform.localPosition = Vector3.zero;
+            AudioManager.instance.PlaySound(itemSO.audioString);
         } 
         else
         {
@@ -26,7 +32,6 @@ public class Ingredient : MonoBehaviour, IInteractable
             transform.parent = null;
             transform.localPosition = player.transform.position;
         }
-        AudioManager.instance.PlaySound(itemSO.audioString);
     }
 
     public void DestroyItem()

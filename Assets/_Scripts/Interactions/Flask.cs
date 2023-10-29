@@ -67,6 +67,7 @@ public class Flask : MonoBehaviour, IInteractable
             transform.localPosition = Vector3.zero;
             player.IsHoldingFlask = true;
             player.SetCurrentFlask(this);
+            AudioManager.instance.PlaySound(itemSO.audioString);
         }
         else
         {
@@ -76,21 +77,27 @@ public class Flask : MonoBehaviour, IInteractable
             player.IsHoldingFlask = false;
             player.SetCurrentFlask(null);
         }
-        AudioManager.instance.PlaySound(itemSO.audioString);
     }
 
-    public void FillFlask(PotionSO potionFilledSO)
+    public void FillFlask(int id)
     {
         //SetCurrentPotionSO,
-        Debug.Log(potionFilledSO.name + "!!!!");
-        currentPotionSO = potionFilledSO;
+        foreach(var potion in allPotionsSO)
+        {
+            if (potion.id == id)
+            {
+                currentPotionSO = potion;
+                break;
+            }            
+        }
+        Debug.Log(currentPotionSO.name + "!!!!");
         if (isFull) return;
         isFull = true;
-        if (potionFilledSO != null)
+        if (currentPotionSO != null)
         {
-            AudioManager.instance.PlaySound(potionFilledSO.audioString);
+            AudioManager.instance.PlaySound(currentPotionSO.audioString);
             rightPotion = true;
-            sr.sprite = potionFilledSO.potionSprite;
+            sr.sprite = currentPotionSO.potionSprite;
         } 
         else sr.sprite = wrongPotion.sprite;
 

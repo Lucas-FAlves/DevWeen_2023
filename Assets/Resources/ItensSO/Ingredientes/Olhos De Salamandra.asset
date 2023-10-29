@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 4
   anim: {fileID: 0}
   sprite: {fileID: 1271633414, guid: d7267618f59d34a4b8b483655655f340, type: 3}
+  audioString: eyeflop

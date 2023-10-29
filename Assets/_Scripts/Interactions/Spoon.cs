@@ -27,6 +27,7 @@ public class Spoon : MonoBehaviour, IInteractable
             isOnHand = true;
             transform.parent = player.ItemHolderTransform;
             transform.localPosition = Vector3.zero;
+            AudioManager.instance.PlaySound(itemSO.audioString);
         }
         else
         {
@@ -34,6 +35,5 @@ public class Spoon : MonoBehaviour, IInteractable
             transform.parent = null;
             transform.localPosition = player.transform.position;
         }
-        AudioManager.instance.PlaySound(itemSO.audioString);
     }
 }
