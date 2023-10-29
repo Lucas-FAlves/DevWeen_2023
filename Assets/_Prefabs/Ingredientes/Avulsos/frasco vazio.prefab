@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3558638676140116270}
   - component: {fileID: 731460377239187346}
   - component: {fileID: 6323159978808460944}
-  - component: {fileID: 8438400478984874056}
+  - component: {fileID: 4413560194862445363}
   m_Layer: 6
   m_Name: frasco vazio
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &8438400478984874056
+--- !u!114 &4413560194862445363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3947522600671982612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 159f68b2c542e2c47a37dcc1f265dcf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 68ca0a17717cc4e489ea2776dc0840c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 11400000, guid: 886aa02d1425ea74d8c0eba6574ffac0, type: 2}
+  itemSO: {fileID: 11400000, guid: 980c745f86d6c2b40b2dc1753d6dbd16, type: 2}
+  wrongPotion: {fileID: 11400000, guid: c8def3e561db5cb48adc8ba971013320, type: 2}
+  wrongActualPotionSO: {fileID: 11400000, guid: 5e51d2ba48d109746849270e818a8195, type: 2}
