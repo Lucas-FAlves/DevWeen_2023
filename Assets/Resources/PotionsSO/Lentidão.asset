@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91b715c5fef5a648a2c3c25b777b603, type: 3}
+  m_Name: "Lentid\xE3o"
+  m_EditorClassIdentifier: 
+  id: 0
+  ingredients:
+  - {fileID: 11400000, guid: ce20294db7d788b4fa990bb1b4801dba, type: 2}
+  - {fileID: 11400000, guid: 9c4cf0e1195fd4140b7c24640bf8e1b8, type: 2}
+  - {fileID: 11400000, guid: 69b7b47728171fe4a91fe636fa0c0671, type: 2}
+  reqTime: 0
+  potionSprite: {fileID: -781621585, guid: d1dd52cab15427d45b97e20a02bab54b, type: 3}
