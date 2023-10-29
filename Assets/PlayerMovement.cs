@@ -22,31 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {   
         //int moveUp, moveDown, moveLeft, moveRight;
-        movementValue = playerControls.ReadValue<Vector2>();
-
-        // if(movementValue.x != 0)
-        // {
-        //     if (movementValue.x > 0)
-        //     {
-        //         moveRight = 1;
-        //     }
-        //     else
-        //     {
-        //         moveLeft = 1;
-        //     }
-        // }
-        // if(movementValue.y != 0)
-        // {
-        //     if (movementValue.y > 0)
-        //     {
-        //         moveUp = 1;
-        //     }
-        //     else
-        //     {
-        //         moveDown = 1;
-        //     }
-        // }
-   
+        movementValue = playerControls.ReadValue<Vector2>();   
     }
 
     private void FixedUpdate() 
