@@ -309,6 +309,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   interactionRange: 0.9
+  wrongPotion: {fileID: 11400000, guid: 5e51d2ba48d109746849270e818a8195, type: 2}
 --- !u!1 &5386299148900618568
 GameObject:
   m_ObjectHideFlags: 0

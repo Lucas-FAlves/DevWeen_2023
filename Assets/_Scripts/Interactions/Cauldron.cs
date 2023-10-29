@@ -22,7 +22,8 @@ public class Cauldron : MonoBehaviour
     [SerializeField] private float interactionRange = 2f;
 
     private PotionSO[] allPotionsSO;
-    private PotionSO currentPotion = null;
+    private PotionSO currentPotion;
+    [SerializeField] private PotionSO wrongPotion;
     private bool existingRecipe = false;
 
     private AudioClip cauldronAudio;
@@ -42,6 +43,7 @@ public class Cauldron : MonoBehaviour
         {
             slots[i] = transform.GetChild(i).gameObject;
         }
+        currentPotion = wrongPotion;
     }
 
     private void OnEnable()
@@ -97,7 +99,7 @@ public class Cauldron : MonoBehaviour
             } 
             else
             {
-                currentPotion = null;
+                currentPotion = wrongPotion;
             }
         }
         return matched;

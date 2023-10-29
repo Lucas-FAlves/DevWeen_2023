@@ -8,6 +8,7 @@ public class Flask : MonoBehaviour, IInteractable
 {
     [SerializeField] ItemSO itemSO;
     [SerializeField] ItemSO wrongPotion;
+    [SerializeField] PotionSO wrongActualPotionSO;
 
     private PotionSO currentPotionSO;
     public PotionSO CurrentPotionSO => currentPotionSO;
@@ -90,7 +91,9 @@ public class Flask : MonoBehaviour, IInteractable
                 break;
             }            
         }
-        Debug.Log(currentPotionSO.name + "!!!!");
+
+        currentPotionSO = wrongActualPotionSO;
+
         if (isFull) return;
         isFull = true;
         if (currentPotionSO != null)
@@ -98,8 +101,12 @@ public class Flask : MonoBehaviour, IInteractable
             AudioManager.instance.PlaySound(currentPotionSO.audioString);
             rightPotion = true;
             sr.sprite = currentPotionSO.potionSprite;
-        } 
-        else sr.sprite = wrongPotion.sprite;
+        }
+        else
+        {
+            AudioManager.instance.PlaySound("falha");
+            sr.sprite = wrongPotion.sprite;
+        }
 
     }
 }

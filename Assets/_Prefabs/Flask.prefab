@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSO: {fileID: 11400000, guid: 980c745f86d6c2b40b2dc1753d6dbd16, type: 2}
   wrongPotion: {fileID: 11400000, guid: c8def3e561db5cb48adc8ba971013320, type: 2}
+  wrongActualPotionSO: {fileID: 11400000, guid: 5e51d2ba48d109746849270e818a8195, type: 2}
