@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b715c5fef5a648a2c3c25b777b603, type: 3}
   m_Name: "Lentid\xE3o"
   m_EditorClassIdentifier: 
-  id: 0
+  id: 9
   ingredients:
   - {fileID: 11400000, guid: ce20294db7d788b4fa990bb1b4801dba, type: 2}
   - {fileID: 11400000, guid: 9c4cf0e1195fd4140b7c24640bf8e1b8, type: 2}

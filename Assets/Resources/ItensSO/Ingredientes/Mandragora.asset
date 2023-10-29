@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d7d80c49357cc49854319df2c161f9, type: 3}
   m_Name: Mandragora
   m_EditorClassIdentifier: 
-  id: 0
+  id: 3
   anim: {fileID: 0}
   sprite: {fileID: 0}
