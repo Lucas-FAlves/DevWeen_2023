@@ -18,7 +18,11 @@ public class MainMenu : MonoBehaviour
         {
             AudioManager.instance.StopSound("musica menu");
         }
-
+        
+        if(newScene == "MainScene")
+        {
+            AudioManager.instance.PlaySound("musica tema");
+        }
         SceneManager.LoadScene(newScene);
     }
 
