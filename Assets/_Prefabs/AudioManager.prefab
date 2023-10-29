@@ -105,3 +105,27 @@ MonoBehaviour:
     volume: 0.459
     pitch: 1
     loop: 0
+  - audioSource: {fileID: 0}
+    name: dente
+    clip: {fileID: 8300000, guid: 3b5247ae10c743f4289c45c0ec0d7d20, type: 3}
+    volume: 0.459
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: porosa
+    clip: {fileID: 8300000, guid: c1d03440f9afd4649b553d21957701ea, type: 3}
+    volume: 0.459
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: musica menu
+    clip: {fileID: 8300000, guid: 8de1f3586e9ee3844aeb25c66771bd0c, type: 3}
+    volume: 0.459
+    pitch: 1
+    loop: 0
+  - audioSource: {fileID: 0}
+    name: musica tema
+    clip: {fileID: 8300000, guid: d550de98981bf1c4fb801cd81a075c7e, type: 3}
+    volume: 0.459
+    pitch: 1
+    loop: 0
