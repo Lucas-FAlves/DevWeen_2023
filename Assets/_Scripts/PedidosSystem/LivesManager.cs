@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LivesManager : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class LivesManager : MonoBehaviour
         currentLives--;
         textComponent.text = "Lives = " + currentLives;
         if (currentLives < 0)
-            Debug.Log("fuck");
+        {
+            SceneManager.LoadScene("EndScene");
+        }
     }
 }

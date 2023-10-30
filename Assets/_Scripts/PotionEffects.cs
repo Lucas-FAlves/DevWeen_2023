@@ -7,6 +7,7 @@ public class PotionEffects : MonoBehaviour
 {
     private GameObject player;
     private ParticleSystem smoke;
+    private SpriteRenderer sr;
     
     [SerializeField] private float smokeDuration;
     [SerializeField] private float invisTimer;
@@ -29,12 +30,15 @@ public class PotionEffects : MonoBehaviour
     private void Start() 
     {
         player = GameObject.Find("Player");
+        sr = player.GetComponent<SpriteRenderer>();
         smoke = GameObject.Find("Smoke").GetComponent<ParticleSystem>();
+        smoke.gameObject.SetActive(false);
         
     } 
 
     void Effect (int id)
     {
+        Debug.Log("Effect" + id);
         switch(id)
         {
             case 6:
@@ -62,20 +66,21 @@ public class PotionEffects : MonoBehaviour
 
     IEnumerator RestoreSpeed(float timer, PlayerMovement jogador)
     {
-        jogador.moveSpeed = jogador.auxSpeed;
         yield return new WaitForSeconds(timer);
+        jogador.moveSpeed = jogador.auxSpeed;
     }
     
     IEnumerator RestoreVisibility(float timer, SpriteRenderer jogador)
     {
         jogador.enabled = false;
         yield return new WaitForSeconds(timer);
+        jogador.enabled = true;
     }
 
     IEnumerator DisableSmoke(float timer)
     {
-        smoke.Stop();
         yield return new WaitForSeconds(timer);
+        smoke.Stop();
     }
 
     public void SpeedBoost(float newSpeed, float duration)
@@ -94,13 +99,13 @@ public class PotionEffects : MonoBehaviour
 
     public void Invisibility(float duration)
     {
-        SpriteRenderer jogador = player.GetComponent<SpriteRenderer>();
-        jogador.enabled = false;
-        StartCoroutine(RestoreVisibility(duration, jogador));
+        SpriteRenderer sr = player.GetComponent<SpriteRenderer>();
+        StartCoroutine(RestoreVisibility(duration, sr));
     }
 
     public void SmokeScreen(float duration)
     {
+        smoke.gameObject.SetActive(true);
         smoke.Play();
         StartCoroutine(DisableSmoke(duration)); 
     }

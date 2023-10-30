@@ -149,6 +149,7 @@ public class Cauldron : MonoBehaviour
 
         StartCoroutine(ResetCauldron());
 
+        Debug.Log(currentPotion.id + " Effect");
         PotionEffects.OnEffect?.Invoke(currentPotion.id);
         currentIndex = 0;
         existingRecipe = false;

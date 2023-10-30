@@ -492,10 +492,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1850478261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 227, y: 179}
-  m_SizeDelta: {x: -735.4947, y: -478.6065}
+  m_AnchoredPosition: {x: -186, y: -101.00001}
+  m_SizeDelta: {x: 306.81, y: -122.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592261325
 MonoBehaviour:
@@ -546,8 +546,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -628,10 +628,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1850478261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -259, y: 179}
-  m_SizeDelta: {x: -735.4947, y: -478.6065}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 159, y: -105}
+  m_SizeDelta: {x: 304.0618, y: -117.331116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815414580
 MonoBehaviour:
@@ -682,8 +682,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 1850478259}
   - component: {fileID: 1850478258}
   - component: {fileID: 1850478262}
+  - component: {fileID: 1850478263}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1332,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1404,6 +1405,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
+--- !u!114 &1850478263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850478257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628aead59c2f19a43a94f7d3f5b73c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScoreComponent: {fileID: 592261325}
+  lastScoreComponent: {fileID: 815414580}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

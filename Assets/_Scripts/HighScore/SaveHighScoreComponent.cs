@@ -9,7 +9,7 @@ public class SaveHighScoreComponent : MonoBehaviour
     [SerializeField] private TextMeshProUGUI lastScoreComponent;
     void Start()
     {
-        maxScoreComponent.text = "Texto Max Score: " + SaveHighScore.GetMaxScore();
-        lastScoreComponent.text = "Texto Last Score: " + SaveHighScore.GetLastScore();
+        maxScoreComponent.text = "Maior Pontuação: " + SaveHighScore.GetMaxScore();
+        lastScoreComponent.text = "Pontuação Atual: " + SaveHighScore.GetLastScore();
     }
 }
