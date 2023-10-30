@@ -1,11 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PotionEffects : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private ParticleSystem smoke; 
+    private GameObject player;
+    private ParticleSystem smoke;
+    
+    [SerializeField] private float smokeDuration;
+    [SerializeField] private float invisTimer;
+    [SerializeField] private float nerfDuration;
+    [SerializeField] private float boostDuration;
+    [SerializeField] private float nerf;
+    [SerializeField] private float boost;
+    
+    public static Action<int> OnEffect;
+    private void OnEnable() 
+    {
+        OnEffect += Effect;   
+    }
+
+    private void OnDisable() 
+    {
+        OnEffect -= Effect;   
+    }
+    
+    private void Start() 
+    {
+        player = GameObject.Find("Player");
+        smoke = GameObject.Find("Smoke").GetComponent<ParticleSystem>();
+        
+    } 
+
+    void Effect (int id)
+    {
+        switch(id)
+        {
+            case 6:
+            SmokeScreen(smokeDuration);
+            break;
+
+            case 7:
+            Debug.Log("Instabilidade");
+            break;
+
+            case 8:
+            Invisibility(invisTimer);
+            break;
+
+            case 9:
+            SpeedNerf(nerf, nerfDuration);
+            break;
+
+            case 10:
+            SpeedBoost(boost, boostDuration);
+            break;
+        }
+
+    }
 
     IEnumerator RestoreSpeed(float timer, PlayerMovement jogador)
     {
