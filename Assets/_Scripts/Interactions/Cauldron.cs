@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 public class Cauldron : MonoBehaviour
 {
@@ -28,12 +27,12 @@ public class Cauldron : MonoBehaviour
     private bool existingRecipe = false;
 
     private Animator anim;
-    [SerializeField] private AnimatorController animDerramando;
-    [SerializeField] private AnimatorController animMarrom;
-    [SerializeField] private AnimatorController animRosa;
-    [SerializeField] private AnimatorController animRoxo;
-    [SerializeField] private AnimatorController animVermelho;
-    [SerializeField] private AnimatorController animAgua;
+    //[SerializeField] private AnimatorController animDerramando;
+    //[SerializeField] private AnimatorController animMarrom;
+    //[SerializeField] private AnimatorController animRosa;
+    //[SerializeField] private AnimatorController animRoxo;
+    //[SerializeField] private AnimatorController animVermelho;
+    //[SerializeField] private AnimatorController animAgua;
 
 
     private void Awake()
@@ -88,19 +87,19 @@ public class Cauldron : MonoBehaviour
             switch(currentPotion.id)
             {
                 case 6:
-                    anim.runtimeAnimatorController = animVermelho;
+                    //anim.runtimeAnimatorController = animVermelho;
                     break;
                 case 7:
-                    anim.runtimeAnimatorController = animRosa;
+                    //anim.runtimeAnimatorController = animRosa;
                     break;
                 case 8:
-                    anim.runtimeAnimatorController = animRoxo;
+                    //anim.runtimeAnimatorController = animRoxo;
                     break;
                 case 9:
-                    anim.runtimeAnimatorController = animAgua;
+                    //anim.runtimeAnimatorController = animAgua;
                     break;
                 case 10:
-                    anim.runtimeAnimatorController = animRosa;
+                    //anim.runtimeAnimatorController = animRosa;
                     break;
             }
 
@@ -144,7 +143,7 @@ public class Cauldron : MonoBehaviour
         if (!playerIsNear)
             return;
 
-        anim.runtimeAnimatorController = animDerramando;
+        //anim.runtimeAnimatorController = animDerramando;
         lenght = anim.GetCurrentAnimatorStateInfo(0).length;
 
         StartCoroutine(ResetCauldron());
@@ -166,7 +165,7 @@ public class Cauldron : MonoBehaviour
     IEnumerator ResetCauldron()
     {
         yield return new WaitForSeconds(lenght);
-        anim.runtimeAnimatorController = null;
+       // anim.runtimeAnimatorController = null;
     }
 
     public bool PlaceItemOnCauldron(ItemSO item)

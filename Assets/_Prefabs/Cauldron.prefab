@@ -311,12 +311,6 @@ MonoBehaviour:
     m_Bits: 256
   interactionRange: 0.9
   wrongPotion: {fileID: 11400000, guid: 5e51d2ba48d109746849270e818a8195, type: 2}
-  animDerramando: {fileID: 9100000, guid: b90da8447196a2848979fab80de6d64c, type: 2}
-  animMarrom: {fileID: 9100000, guid: 7267e5b56b02e6b4299d5defdb71dbb4, type: 2}
-  animRosa: {fileID: 9100000, guid: dc17cf4516808ae48bcf0811d4b3cecf, type: 2}
-  animRoxo: {fileID: 9100000, guid: f7d3301cf4bac8b489e0aff4be8f69cb, type: 2}
-  animVermelho: {fileID: 9100000, guid: ff8179e23210d8a43ba8ab0b1057967c, type: 2}
-  animAgua: {fileID: 9100000, guid: 8af5167493ecf8a4d86fd8249f68479e, type: 2}
 --- !u!95 &1200930824288128831
 Animator:
   serializedVersion: 5
@@ -327,7 +321,7 @@ Animator:
   m_GameObject: {fileID: 4704672682726390124}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1826629dbd6d32f46b80bab8ecdaabe3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
