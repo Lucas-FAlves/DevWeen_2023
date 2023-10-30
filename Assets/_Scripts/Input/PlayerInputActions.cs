@@ -71,6 +71,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Entrega"",
+                    ""type"": ""Button"",
+                    ""id"": ""d860c4ef-d56b-41f7-a5bd-e15f2ed9e23a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Lixo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c35cb634-ea23-457b-9445-11710aafe03d"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Entrega"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_MexerComColher = m_Player.FindAction("MexerComColher", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Lixo = m_Player.FindAction("Lixo", throwIfNotFound: true);
+        m_Player_Entrega = m_Player.FindAction("Entrega", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MexerComColher;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Lixo;
+    private readonly InputAction m_Player_Entrega;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @MexerComColher => m_Wrapper.m_Player_MexerComColher;
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Lixo => m_Wrapper.m_Player_Lixo;
+        public InputAction @Entrega => m_Wrapper.m_Player_Entrega;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +307,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Lixo.started += instance.OnLixo;
             @Lixo.performed += instance.OnLixo;
             @Lixo.canceled += instance.OnLixo;
+            @Entrega.started += instance.OnEntrega;
+            @Entrega.performed += instance.OnEntrega;
+            @Entrega.canceled += instance.OnEntrega;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -303,6 +329,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Lixo.started -= instance.OnLixo;
             @Lixo.performed -= instance.OnLixo;
             @Lixo.canceled -= instance.OnLixo;
+            @Entrega.started -= instance.OnEntrega;
+            @Entrega.performed -= instance.OnEntrega;
+            @Entrega.canceled -= instance.OnEntrega;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -327,5 +356,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMexerComColher(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnLixo(InputAction.CallbackContext context);
+        void OnEntrega(InputAction.CallbackContext context);
     }
 }

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 404
   anim: {fileID: 0}
-  sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: -1403564980, guid: 2c4d657a0433e6c4d83f8d05a8144eab, type: 3}
   audioString: falha

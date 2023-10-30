@@ -13,7 +13,7 @@ public class Flask : MonoBehaviour, IInteractable
     private PotionSO currentPotionSO;
     public PotionSO CurrentPotionSO => currentPotionSO;
 
-    private bool isOnHand = false;
+    private bool isOnHand = true;
     private SpriteRenderer sr;
     public bool IsOnHand => isOnHand;
     private bool isFull = false;
@@ -34,6 +34,10 @@ public class Flask : MonoBehaviour, IInteractable
         allPotionsSO = Resources.LoadAll<PotionSO>("PotionsSO");
         sr = GetComponent<SpriteRenderer>();
     }
+    private void Start()
+    {
+        player.SetCurrentFlask(this);
+    }
 
     public void DestroyItem()
     {
@@ -53,6 +57,7 @@ public class Flask : MonoBehaviour, IInteractable
 
     public ItemSO GetItemSO()
     {
+        player.SetCurrentFlask(this);
         return itemSO;
     }
 
@@ -67,7 +72,9 @@ public class Flask : MonoBehaviour, IInteractable
             isOnHand = true;
             transform.parent = player.ItemHolderTransform;
             transform.localPosition = Vector3.zero;
+            this.player.IsHoldingFlask = true;
             player.IsHoldingFlask = true;
+            this.player.SetCurrentFlask(this);
             player.SetCurrentFlask(this);
             AudioManager.instance.PlaySound(itemSO.audioString);
         }
@@ -76,15 +83,18 @@ public class Flask : MonoBehaviour, IInteractable
             isOnHand = false;
             transform.parent = null;
             transform.localPosition = player.transform.position;
+            this.player.IsHoldingFlask = true;
             player.IsHoldingFlask = false;
+            this.player.SetCurrentFlask(null);
             player.SetCurrentFlask(null);
         }
     }
 
     public void FillFlask(int id)
     {
-        //SetCurrentPotionSO,
-        foreach(var potion in allPotionsSO)
+        Debug.Log(id + " Fill FLask");
+        currentPotionSO = wrongActualPotionSO;
+        foreach (var potion in allPotionsSO)
         {
             if (potion.id == id)
             {
@@ -93,11 +103,10 @@ public class Flask : MonoBehaviour, IInteractable
             }            
         }
 
-        currentPotionSO = wrongActualPotionSO;
-
         if (isFull) return;
         isFull = true;
-        if (currentPotionSO != null)
+
+        if (currentPotionSO != wrongActualPotionSO)
         {
             AudioManager.instance.PlaySound(currentPotionSO.audioString);
             rightPotion = true;

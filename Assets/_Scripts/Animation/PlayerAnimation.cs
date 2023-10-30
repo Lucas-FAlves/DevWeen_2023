@@ -20,11 +20,19 @@ public class PlayerAnimation : MonoBehaviour
     {
         inputActions.Player.Move.performed += ChangeAnimation;
         inputActions.Player.Move.canceled += CancelAnimation;
+        inputActions.Player.VirarCaldeirao.performed += MagiaCaldeirao;
     }
     private void OnDisable()
     {
         inputActions.Player.Move.performed -= ChangeAnimation;
         inputActions.Player.Move.canceled -= CancelAnimation;
+        inputActions.Player.VirarCaldeirao.performed -= MagiaCaldeirao;
+    }
+
+    private void MagiaCaldeirao(InputAction.CallbackContext context)
+    {
+        animator.enabled = true;
+        animator.Play("DerrubandoCaldeirao");
     }
 
     private void CancelAnimation(InputAction.CallbackContext context)
@@ -39,7 +47,7 @@ public class PlayerAnimation : MonoBehaviour
         var direction = context.ReadValue<Vector2>();
         lastDir = direction;
         animator.enabled = true;
-        if (direction == Vector2.zero)
+        if (direction == Vector2.zero && !animator.GetCurrentAnimatorStateInfo(0).IsName("DerrubandoCaldeirao"))
         {
             animator.enabled = false;
             return;

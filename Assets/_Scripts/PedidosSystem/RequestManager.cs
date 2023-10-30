@@ -10,7 +10,7 @@ public class RequestManager : MonoBehaviour
     [SerializeField] private GameObject requestPrefab;
 
     [SerializeField] private int maxRequests = 5;
-    private int currentRequests = 0;
+    private static int currentRequests = 0;
 
     [SerializeField] private float timeBetweenRequests = 15f;
     private float currentTime = 0f;
@@ -18,6 +18,7 @@ public class RequestManager : MonoBehaviour
     private static List<Request> requests = new List<Request>();
 
     public static Action OnRequestFailed;
+    public static Action<int> OnPotionDelivered;
 
     private void Awake()
     {
@@ -27,10 +28,12 @@ public class RequestManager : MonoBehaviour
     private void OnEnable()
     {
         OnRequestFailed += RequestFailed;
+        OnPotionDelivered += DeliverRequest;
     }
     private void OnDisable()
     {
         OnRequestFailed -= RequestFailed;
+        OnPotionDelivered -= DeliverRequest;
     }
 
     private void Update()
@@ -57,19 +60,30 @@ public class RequestManager : MonoBehaviour
         currentRequests = transform.childCount;
     }
 
-    public static PotionSO DeliverRequest(PotionSO potionSO)
+    public void DeliverRequest(int id)
     {
+        int i = 0;
+        PotionSO potionSO = null;
+        foreach(var potion in allPotionsSO)
+        {
+            if(potion.id == allPotionsSO[i].id)
+            {
+                potionSO = potion;
+                break;
+            }
+            i++;
+        }
         foreach (var request in requests)
         {
-            if(request.CurrentPotionRequest == potionSO)
+            if(request.CurrentPotionRequest.Equals(potionSO))
             {
                 ScoreManager.OnPotionScore?.Invoke(potionSO.Score);
                 AudioManager.instance.PlaySound("entrega");
+                requests.Remove(request);
+                Destroy(request);
                 break;
             }
         }
-        //Invoke
-        return requests.ElementAt(0).CurrentPotionRequest;
     }
 
     public void RequestFailed()

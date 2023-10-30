@@ -23,25 +23,26 @@ public class FinishStation : MonoBehaviour
     }
     private void OnEnable()
     {
-        playerInputActions.Player.Interact.performed += Interact;
+        playerInputActions.Player.Entrega.performed += Interact;
     }
 
     private void OnDisable()
     {
-        playerInputActions.Player.Interact.performed -= Interact;
+        playerInputActions.Player.Entrega.performed -= Interact;
     }
     private void Interact(InputAction.CallbackContext context)
     {
         if (!playerIsNear) return;
-
-        if (!player.IsHoldingItem) return;
+        if (!player.IsHoldingFlask) return;
 
         currentFlask = player.GetCurrentFlask();
 
         if(currentFlask == null) return;
 
-        RequestManager.DeliverRequest(currentFlask.CurrentPotionSO);
+        Debug.Log(currentFlask.CurrentPotionSO.id);
+        RequestManager.OnPotionDelivered?.Invoke(currentFlask.CurrentPotionSO.id);
         currentFlask.gameObject.SetActive(false);
+        player.IsHoldingFlask = false;
         player.SetCurrentFlask(null);
         player.SetCurentItem(null);
     }

@@ -73,6 +73,7 @@ public class Cauldron : MonoBehaviour
             return;
 
         var flask = player.GetCurrentFlask();
+        Debug.Log(flask);
         flask.FillFlask(currentPotion.id);
     }
 
@@ -104,10 +105,6 @@ public class Cauldron : MonoBehaviour
             }
 
         } 
-        else
-        {
-
-        }
 
     }
     public bool CheckIfRecipeMatch()
@@ -117,7 +114,7 @@ public class Cauldron : MonoBehaviour
         {
             for (int i = 0; i < cauldronItems.Length; i++)
             {          
-                if (cauldronItems[i] != potion.ingredients[i])
+                if (!cauldronItems[i].Equals(potion.ingredients[i]))
                     break;
 
                 if(i == cauldronItems.Length - 1)
@@ -138,6 +135,7 @@ public class Cauldron : MonoBehaviour
         return matched;
     }
 
+    private float lenght;
     private void EmptyCauldron(InputAction.CallbackContext context)
     {
         if (player.IsHoldingItem)
@@ -147,7 +145,11 @@ public class Cauldron : MonoBehaviour
             return;
 
         anim.runtimeAnimatorController = animDerramando;
+        lenght = anim.GetCurrentAnimatorStateInfo(0).length;
 
+        StartCoroutine(ResetCauldron());
+
+        //PotionEffects.OnEffect?.Invoke(currentPotion.id);
         currentIndex = 0;
         existingRecipe = false;
 
@@ -158,6 +160,12 @@ public class Cauldron : MonoBehaviour
             slots[i].GetComponent<SpriteRenderer>().sprite = null;
             cauldronItems[i] = null;
         }
+    }
+
+    IEnumerator ResetCauldron()
+    {
+        yield return new WaitForSeconds(lenght);
+        anim.runtimeAnimatorController = null;
     }
 
     public bool PlaceItemOnCauldron(ItemSO item)
