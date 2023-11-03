@@ -80,7 +80,7 @@ public class RequestManager : MonoBehaviour
                 ScoreManager.OnPotionScore?.Invoke(potionSO.Score);
                 AudioManager.instance.PlaySound("entrega");
                 requests.Remove(request);
-                Destroy(request.gameObject);
+                Destroy(request);
                 break;
             }
         }
